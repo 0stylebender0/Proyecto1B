@@ -1,9 +1,6 @@
-#include "ABB.h"
-#include "AVL.h"
-#include "BTREE.h"
-#include "Lista.h"
+#include "Menu.h"
 
-int main()
-{
-    cout << "Hello World!\n";
+int main(){
+	menu();
+	return 0;
 }

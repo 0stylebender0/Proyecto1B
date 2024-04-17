@@ -134,6 +134,7 @@
     <ClInclude Include="AVL.h" />
     <ClInclude Include="BTREE.h" />
     <ClInclude Include="Lista.h" />
+    <ClInclude Include="Menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
