@@ -129,6 +129,12 @@
   <ItemGroup>
     <ClCompile Include="Proyecto1B.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ABB.h" />
+    <ClInclude Include="AVL.h" />
+    <ClInclude Include="BTREE.h" />
+    <ClInclude Include="Lista.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
