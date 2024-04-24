@@ -14,7 +14,7 @@
 #include <windows.h>
 
 using namespace std;
-double tiempos[4];
+double tiemposLista[4];
 
 typedef struct T_Votante { //Se define la estructura para los votantes
 	char cedula[10];
@@ -104,10 +104,11 @@ void cargarLista(PtrT_Votante& ListaMaestra) {
 	}
 
 	fin = time(NULL);
-	tiempos[0] = difftime(fin, inicio);
+	tiemposLista[0] = difftime(fin, inicio);
 	printf("\nEl cargado del padron ha tardado : %f segundos.\n", difftime(fin, inicio));
 	cout << "----------------------------Lista cargada--------------------------------\n\n" << endl;
 	system("pause");
+	system("CLS");
 }
 
 void listar(PtrT_Votante& ListaMaestra) {
@@ -122,14 +123,16 @@ void listar(PtrT_Votante& ListaMaestra) {
 			Aux = Aux->PtrSiguiente;
 		}
 		fin = time(NULL);
-		tiempos[1] = difftime(fin, inicio);
+		tiemposLista[1] = difftime(fin, inicio);
 		printf("\nLa lista de votantes ha tardado : %f segundos.\n", difftime(fin, inicio));
 		cout << "----------------------------Votantes listados--------------------------------\n\n" << endl;
 		system("pause");
+		system("CLS");
 	}
 	else {
 		cout << "No hay votantes en la lista\n\n" << endl;
 		system("pause");
+		system("CLS");
 	}
 }
 
@@ -154,17 +157,19 @@ void buscarLista(PtrT_Votante& Lista, char cual[9]) {
 	}
 
 	fin = time(NULL);
-	tiempos[2] = difftime(fin, inicio);
+	tiemposLista[2] = difftime(fin, inicio);
 
 	if (encontro == false) {
 		printf("\nLa busqueda del votante ha tardado : %f segundos.\n", difftime(fin, inicio));
 		cout << "----------------------------Votante no encontrado--------------------------------\n\n" << endl;
 		system("pause");
+		system("CLS");
 	}
 	else {
 		printf("\nLa busqueda del votante ha tardado : %f segundos.\n", difftime(fin, inicio));
 		cout << "----------------------------Votante encontrado--------------------------------\n\n" << endl;
 		system("pause");
+		system("CLS");
 	}
 }
 
@@ -182,17 +187,20 @@ void destuirLista(PtrT_Votante& ListaV) {
 	}
 
 	fin = time(NULL);
-	tiempos[3] = difftime(fin, inicio);
+	tiemposLista[3] = difftime(fin, inicio);
 	printf("\nLa liberacion del padron ha tardado : %f segundos.\n", difftime(fin, inicio));
 	cout << "----------------------------Padron liberado--------------------------------\n\n" << endl;
 	system("pause");
+	system("CLS");
 }
 
 void resumenTiemposLista() {
 	cout << "----------------------------Resumen de tiempos--------------------------------" << endl;
-	cout << "Carga de padron: " << tiempos[0] << " segundos." << endl;
-	cout << "Listado de votantes: " << tiempos[1] << " segundos." << endl;
-	cout << "Ulitma busqueda de votante: " << tiempos[2] << " segundos." << endl;
-	cout << "Liberacion de padron: " << tiempos[3] << " segundos." << endl;
+	cout << "Carga de padron: " << tiemposLista[0] << " segundos." << endl;
+	cout << "Listado de votantes: " << tiemposLista[1] << " segundos." << endl;
+	cout << "Ulitma busqueda de votante: " << tiemposLista[2] << " segundos." << endl;
+	cout << "Liberacion de padron: " << tiemposLista[3] << " segundos." << endl;
 	cout << "----------------------------Fin de resumen--------------------------------\n\n" << endl;
+	system("pause");
+	system("CLS");
 }
