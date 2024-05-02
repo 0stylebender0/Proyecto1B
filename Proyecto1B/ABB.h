@@ -13,16 +13,16 @@ typedef struct NodoBB {
 bool insertarABB(NodoBB*& Raiz, const char* cualllave) {
     if (Raiz == NULL) {                         // Si el Arbol esta vacio
         Raiz = new NodoBB;                      // Reserva memoria para el nuevo Nodo
-        strcpy_s(Raiz->llave, cualllave);         // Copia la llave al nuevo Nodo
+        strcpy_s(Raiz->llave, cualllave);       // Copia la llave al nuevo Nodo
         Raiz->HijoIzquierdo = NULL;             // Inicializa el puntero al Hijo Izquierdo
         Raiz->HijoDerecho = NULL;               // Inicializa el puntero al Hijo Derecho
         return true;
     }
     else {
         int comparacion = strcmp(cualllave, Raiz->llave);
-        if (comparacion == 0) return false;     // Si la llave ya existe
-        else if (comparacion < 0) return insertarABB(Raiz->HijoIzquierdo, cualllave); // Si la llave es menor, busca en el Hijo Izquierdo
-        else return insertarABB(Raiz->HijoDerecho, cualllave);    // Si la llave es mayor, busca en el Hijo Derecho
+        if (comparacion == 0) return false;                                             // Si la llave ya existe
+        else if (comparacion < 0) return insertarABB(Raiz->HijoIzquierdo, cualllave);   // Si la llave es menor, busca en el Hijo Izquierdo
+        else return insertarABB(Raiz->HijoDerecho, cualllave);                          // Si la llave es mayor, busca en el Hijo Derecho
     }
 }
 
@@ -43,7 +43,7 @@ void destruirABB(NodoBB*& Raiz) {
     if (Raiz != NULL) {                         // Si el Arbol no esta vacio
         destruirABB(Raiz->HijoIzquierdo);       // Podar el Hijo Izquierdo
         destruirABB(Raiz->HijoDerecho);         // Podar el Hijo Derecho
-        delete Raiz;                           // Libera la memoria del Nodo Raiz
+        delete Raiz;                            // Libera la memoria del Nodo Raiz
         Raiz = NULL;                            // Elimina la direccion del Nodo Raiz
     }
 }

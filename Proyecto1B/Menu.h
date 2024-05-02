@@ -3,7 +3,7 @@
 #include "AVL.h"
 #include "BTREE.h"
 #include "Lista.h"
-
+//-----------------------------------Lista dinamica-----------------------------------//
 void listaDinamica(PtrT_Votante &ListaMaestra) {
 	int opcion;
 	char cedula[10];
@@ -47,7 +47,7 @@ void listaDinamica(PtrT_Votante &ListaMaestra) {
 		}
 	} while (opcion != 5);
 }
-
+//-----------------------------------Arbol Binario de Busqueda-----------------------------------//
 void arbolBB(NodoBB* arbol){
 	int opcion;
 	char cedula[10];
@@ -142,7 +142,7 @@ void arbolBB(NodoBB* arbol){
 		}
 	} while (opcion != 5);
 }
-
+//-----------------------------------Menu-----------------------------------//
 void menu() {
 	int opcion;
 	do{
