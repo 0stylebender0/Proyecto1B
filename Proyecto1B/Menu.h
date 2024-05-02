@@ -157,6 +157,8 @@ void menu() {
 
 		PtrT_Votante ListaMaestra = NULL;
 		NodoBB *VotantesABB = NULL;
+		NodoAVL* VotantesAVL = NULL;
+		NodoBtree* VotantesBtree = NULL;
 
 		switch (opcion) {
 			case 1:
@@ -167,6 +169,14 @@ void menu() {
 			case 2:
 				cargarABB(VotantesABB);
 				arbolBB(VotantesABB);
+				break;
+			case 3:
+				VotantesAVL = cargarAVL(VotantesAVL);
+				preOrderAVL(VotantesAVL);
+				break;
+			case 4:
+				cargarBTREE(VotantesBtree);
+				desplegar(VotantesBtree);
 				break;
 
 			case 5:

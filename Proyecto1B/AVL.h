@@ -106,7 +106,7 @@ NodoAVL* insertarAVL(NodoAVL*& Nodo, char* agregar) {
 
 
         int balance = obtenerbalance(Nodo);
-
+        /*
         // 4 casos para un arbol desbalanceado
 
         // izq izq 
@@ -123,14 +123,14 @@ NodoAVL* insertarAVL(NodoAVL*& Nodo, char* agregar) {
             Nodo->izq = RotarIzquierda(Nodo->izq);
             return RotarDerecha(Nodo);
         }
-
+        
         // derecha izq 
         if (balance < -1 && strncmp(agregar, Nodo->derecha->llave, 9) < 0)
         {
             Nodo->derecha = RotarDerecha(Nodo->derecha);
             return RotarIzquierda(Nodo);
         }
-
+        */
         return Nodo;
     }
 }

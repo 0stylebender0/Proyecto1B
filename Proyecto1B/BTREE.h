@@ -110,7 +110,7 @@ void insertar(const char* val, NodoBtree*& PadronBtree) {
 		PadronBtree = crearnodo(i, hijo);
 }
 
-void cargarBTREE(NodoBtree* PadronBtree) {
+void cargarBTREE(NodoBtree* &PadronBtree) {
 	int cont = 1;
 	time_t inicio, fin;
 	inicio = time(NULL);
