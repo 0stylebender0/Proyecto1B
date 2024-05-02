@@ -114,7 +114,7 @@ NodoAVL* insertarAVL(NodoAVL*& Nodo, char* agregar) {
             Nodo->izq = RotarIzquierda(Nodo->izq);
             return RotarDerecha(Nodo);
         }
-
+        
         // derecha izq 
         if (balance < -1 && strncmp(agregar, Nodo->derecha->llave, 9) < 0)
         {
