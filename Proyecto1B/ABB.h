@@ -13,7 +13,7 @@ typedef struct NodoBB {
 bool insertarABB(NodoBB*& Raiz, const char* cualllave) {
     if (Raiz == NULL) {                         // Si el Arbol esta vacio
         Raiz = new NodoBB;                      // Reserva memoria para el nuevo Nodo
-        strcpy(Raiz->llave, cualllave);         // Copia la llave al nuevo Nodo
+        strcpy_s(Raiz->llave, cualllave);         // Copia la llave al nuevo Nodo
         Raiz->HijoIzquierdo = NULL;             // Inicializa el puntero al Hijo Izquierdo
         Raiz->HijoDerecho = NULL;               // Inicializa el puntero al Hijo Derecho
         return true;
@@ -28,6 +28,7 @@ bool insertarABB(NodoBB*& Raiz, const char* cualllave) {
 
 NodoBB* buscarABB(NodoBB* Raiz, const char* cualllave) {
     if (Raiz == NULL) {
+        cout << "No hay votantes en el padron\n\n" << endl;
         return NULL;                            //Si el Arbol esta vacio, retorna NULL
     }
     else {
@@ -42,7 +43,8 @@ void destruirABB(NodoBB*& Raiz) {
     if (Raiz != NULL) {                         // Si el Arbol no esta vacio
         destruirABB(Raiz->HijoIzquierdo);       // Podar el Hijo Izquierdo
         destruirABB(Raiz->HijoDerecho);         // Podar el Hijo Derecho
-        delete Raiz; Raiz = NULL;               // Libera la memoria del Nodo Raiz
+        delete Raiz;                           // Libera la memoria del Nodo Raiz
+        Raiz = NULL;                            // Elimina la direccion del Nodo Raiz
     }
 }
 
@@ -52,7 +54,7 @@ void cargarABB(NodoBB*& PadronABB) {
     inicio = time(NULL);
     FILE* archivo;
 
-    cout << "\n\n----------------------------Cargando lista--------------------------------" << endl;
+    cout << "\n\n----------------------------Cargando arbol--------------------------------" << endl;
 
     fopen_s(&archivo, "PADRON_COMPLETO.txt", "r"); //Abre el archivo del padron electoral con read.
     if (NULL == archivo) {
@@ -72,7 +74,7 @@ void cargarABB(NodoBB*& PadronABB) {
     fin = time(NULL);
     tiemposABB[0] = difftime(fin, inicio);
     printf("\nEl cargado del padron ha tardado : %f segundos.\n", difftime(fin, inicio));
-    cout << "----------------------------Lista cargada--------------------------------\n\n" << endl;
+    cout << "----------------------------Arbol cargado--------------------------------\n\n" << endl;
     system("pause");
     system("CLS");
 }
@@ -93,5 +95,8 @@ void listarABB(NodoBB* Raiz) {
         listarABB(Raiz->HijoDerecho);
         printf("%s\n", Raiz->llave);
         listarABB(Raiz->HijoIzquierdo);
+    }
+    else {
+        cout << "No hay votantes en el padron\n\n" << endl;
     }
 }

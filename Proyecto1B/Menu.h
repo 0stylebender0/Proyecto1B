@@ -94,8 +94,8 @@ void arbolBB(NodoBB* arbol){
 			tiemposABB[2] = difftime(fin2, inicio2);
 			
 			if (buscado != NULL) {
-				cout << "----------------------------Votante encontrado-------------------------------" << endl;
 				cout << buscado->llave << endl;
+				cout << "----------------------------Votante encontrado-------------------------------" << endl;
 			}
 			else {
 				cout << "----------------------------Votante no encontrado----------------------------" << endl;
