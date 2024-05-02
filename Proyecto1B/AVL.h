@@ -79,31 +79,22 @@ int obtenerbalance(NodoAVL*& N)
 }
 
 NodoAVL* insertarAVL(NodoAVL*& Nodo, char* agregar) {
-
-
     if (Nodo == nullptr) {
         nuevoNodo(Nodo, agregar);
     }
     else {
-
-
-        cout << agregar << endl;
         int comparacion = strncmp(agregar, Nodo->llave, 9);
         if (comparacion < 0) {
-            cout << "Insertando " << agregar << " a la izquierda de " << Nodo->llave << endl;
             Nodo->izq = insertarAVL(Nodo->izq, agregar);
         }
         else if (comparacion > 0) {
-            cout << "Insertando " << agregar << " a la derecha de " << Nodo->llave << endl;
             Nodo->derecha = insertarAVL(Nodo->derecha, agregar);
         }
         else // no se permiten llaves iguales
             return Nodo;
 
-
         Nodo->altura = 1 + maximo(altura(Nodo->izq),
             altura(Nodo->derecha));
-
 
         int balance = obtenerbalance(Nodo);
 
@@ -135,36 +126,25 @@ NodoAVL* insertarAVL(NodoAVL*& Nodo, char* agregar) {
     }
 }
 
-NodoAVL* buscarAVL(NodoAVL* Raiz, int cualllave) {
+NodoAVL* buscarAVL(NodoAVL* Raiz, const char* cualllave) {
     if (Raiz == NULL) {
+        cout << "No hay votantes en el padron\n\n" << endl;
         return NULL;                            //Si el Arbol esta vacio, retorna NULL
-
     }
     else {
-        char cedula[9];
-        for (int ce = 0; ce < 9; ce++) {
-            cedula[ce] = Raiz->llave[ce];
-        }
-        int cedulaN = stoi(cedula);
-
-        if (cedulaN == cualllave) {
-            cout << Raiz->llave << endl;
-            return Raiz;
-        }                                          //Si la llave es igual al Nodo Raiz, retorna el Nodo Raiz
-        else if (cualllave < cedulaN) return buscarAVL(Raiz->izq, cualllave); //Si la llave es menor, busca en el Hijo Izquierdo
+        int comparacion = strncmp(cualllave, Raiz->llave, 9);
+        if (comparacion == 0) return Raiz;                                      //Si la llave es igual al Nodo Raiz, retorna el Nodo Raiz
+        else if (comparacion < 0) return buscarAVL(Raiz->izq, cualllave);       //Si la llave es menor, busca en el Hijo Izquierdo
         else return buscarAVL(Raiz->derecha, cualllave);                        //Si la llave es mayor, busca en el Hijo Derecho
     }
 }
 
-//recorido
-void preOrderAVL(NodoAVL*& root)
-{
-    if (root != NULL)
-    {
 
-        preOrderAVL(root->izq);
-        printf("%s\n", root->llave);
-        preOrderAVL(root->derecha);
+void listarAVL(NodoAVL* Raiz) {
+    if (Raiz != NULL) {
+        listarAVL(Raiz->derecha);
+        printf("%s\n", Raiz->llave);
+        listarAVL(Raiz->izq);
     }
 }
 
@@ -200,4 +180,26 @@ NodoAVL* cargarAVL(NodoAVL*& PadronAVL) {
     system("CLS");
 
     return PadronAVL;
+}
+
+void destruirAVL(NodoAVL*& root)
+{
+    if (root != NULL)
+    {
+        destruirAVL(root->izq);
+        destruirAVL(root->derecha);
+        delete root;
+        root = NULL;
+    }
+}
+
+void resumenTiemposAVL() {
+    cout << "----------------------------Resumen de tiempos--------------------------------" << endl;
+    cout << "Carga de padron: " << tiemposAVL[0] << " segundos." << endl;
+    cout << "Listado de votantes: " << tiemposAVL[1] << " segundos." << endl;
+    cout << "Ulitma busqueda de votante: " << tiemposAVL[2] << " segundos." << endl;
+    cout << "Liberacion de padron: " << tiemposAVL[3] << " segundos." << endl;
+    cout << "----------------------------Fin de resumen--------------------------------\n\n" << endl;
+    system("pause");
+    system("CLS");
 }
