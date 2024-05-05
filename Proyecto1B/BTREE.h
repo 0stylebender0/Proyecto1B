@@ -7,7 +7,7 @@ double tiemposBTREE[4];
 #define MIN 2
 
 struct NodoBtree {
-	char llave[MAX + 1][120];
+	char llave[MAX + 1][119];
 	int count;
 	NodoBtree* link[MAX + 1];
 };
@@ -15,28 +15,27 @@ struct NodoBtree {
 NodoBtree* root;
 
 //Crear nodo 
-NodoBtree* crearnodo(const char llave[120], NodoBtree* hijo) {
-	NodoBtree* NuevoNodo = new NodoBtree;
-	strcpy_s(NuevoNodo->llave[0], sizeof(NuevoNodo->llave[0]), llave);
-	NuevoNodo->count = 1;
-	NuevoNodo->link[0] = NULL;
-	NuevoNodo->link[1] = hijo;
-	return NuevoNodo;
+NodoBtree* crearnodo(const char llave[119], NodoBtree* hijo) {
+    NodoBtree* NuevoNodo = new NodoBtree;
+    strncpy_s(NuevoNodo->llave[0], sizeof(NuevoNodo->llave[0]), llave, _TRUNCATE);
+    NuevoNodo->count = 1;
+    NuevoNodo->link[0] = NULL;
+    NuevoNodo->link[1] = hijo;
+    return NuevoNodo;
 }
 
 //coloca el nodo en la posicion adecuada, de acuerdo a su valor
 void Colocarnodo(const char* val, int pos, NodoBtree* node, NodoBtree* hijo) {
 	int j = node->count;
 	while (j > pos) {
-		strcpy_s(node->llave[j + 1], 120, node->llave[j]);
+		strncpy_s(node->llave[j + 1], sizeof(node->llave[j]), node->llave[j], _TRUNCATE);
 		node->link[j + 1] = node->link[j];
 		j--;
 	}
-	strcpy_s(node->llave[j + 1], sizeof(node->llave[j + 1]), val);
+	strncpy_s(node->llave[j + 1], sizeof(node->llave[j]), val, _TRUNCATE);
 	node->link[j + 1] = hijo;
 	node->count++;
 }
-
 
 void PartirNodo(const char* val, char* pval, int pos, NodoBtree* node, NodoBtree* hijo, NodoBtree** NuevoNodo) {
 	int median, j;
@@ -49,7 +48,7 @@ void PartirNodo(const char* val, char* pval, int pos, NodoBtree* node, NodoBtree
 	*NuevoNodo = new NodoBtree;
 	j = median + 1;
 	while (j <= MAX) {
-		strcpy_s((*NuevoNodo)->llave[j - median], node->llave[j]);
+		strncpy_s((*NuevoNodo)->llave[j - median], sizeof((*NuevoNodo)->llave[j]), node->llave[j], _TRUNCATE);
 		(*NuevoNodo)->link[j - median] = node->link[j];
 		j++;
 	}
@@ -62,7 +61,7 @@ void PartirNodo(const char* val, char* pval, int pos, NodoBtree* node, NodoBtree
 	else {
 		Colocarnodo(val, pos - median, *NuevoNodo, hijo);
 	}
-	strcpy_s(pval, 120, node->llave[node->count]);
+	strncpy_s(pval, sizeof(node->llave[node->count]), node->llave[node->count], _TRUNCATE);
 	(*NuevoNodo)->link[0] = node->link[node->count];
 	node->count--;
 }
@@ -72,7 +71,7 @@ int SetValorNodo(const char* val, char* pval, NodoBtree* node, NodoBtree** hijo)
 
 	int pos;
 	if (!node) {
-		strcpy_s(pval, 120, val);
+		strcpy_s(pval, 119, val);
 		*hijo = NULL;
 		return 1;
 	}
@@ -84,7 +83,6 @@ int SetValorNodo(const char* val, char* pval, NodoBtree* node, NodoBtree** hijo)
 		for (pos = node->count;
 			(strncmp(val, node->llave[pos], 9) < 0 && pos > 1); pos--);
 		if (strncmp(val, node->llave[pos], 9) == 0) {
-			cout << "No est� permitido nodos duplicados\n";
 			return 0;
 		}
 	}
@@ -102,7 +100,7 @@ int SetValorNodo(const char* val, char* pval, NodoBtree* node, NodoBtree** hijo)
 
 //inserta valores en el btree
 void insertar(const char* val, NodoBtree*& PadronBtree) {
-	char i[120];
+	char i[119];
 	NodoBtree* hijo;
 	char flag = SetValorNodo(val, i, PadronBtree, &hijo);
 
@@ -309,8 +307,6 @@ int BorrarDeNodo(const char* val, NodoBtree* minodo) {
 void borrado(const char* val, NodoBtree*& minodo) {
 	NodoBtree* tmp;
 	if (!BorrarDeNodo(val, minodo)) {
-		cout << "No existe ese valor en el B-Tree\n";
-		system("pause");
 		return;
 	}
 	else {
@@ -321,13 +317,11 @@ void borrado(const char* val, NodoBtree*& minodo) {
 		}
 	}
 	root = minodo;
-	cout << "Borrado" << endl;
-	system("pause");
 	return;
 }
 
 /* search val in B-Tree */
-void busqueda(const char* val, int* pos, NodoBtree* minodo) {
+void buscarBtree(const char* val, int* pos, NodoBtree* minodo) {
 	if (!minodo) {
 		return;
 	}
@@ -339,14 +333,13 @@ void busqueda(const char* val, int* pos, NodoBtree* minodo) {
 		for (*pos = minodo->count;
 			(strcmp(val, minodo->llave[*pos]) < 0 && *pos > 1); (*pos)--);
 		if (strcmp(val, minodo->llave[*pos]) == 0) {
-			cout << "Se ha encontrado el Nodo\n";
-			system("pause");
+			cout << "----------------------------Votante encontrado-------------------------------" << endl;
+			cout << "Votante: " << minodo->llave[*pos] << endl;
 			return;
 		}
 	}
-	busqueda(val, pos, minodo->link[*pos]);
-	cout << "No se ha encontrado el Nodo\n";
-	system("pause");
+	buscarBtree(val, pos, minodo->link[*pos]);
+	cout << "----------------------------Votante no encontrado----------------------------" << endl;
 	return;
 }
 
@@ -357,13 +350,31 @@ void desplegar(NodoBtree* minodo) {
 		for (i = 0; i < minodo->count; i++) {
 			desplegar(minodo->link[i]);
 			for (int j = 0; j < strlen(minodo->llave[i]); j++) {
-				cout << minodo->llave[i][j];
+				cout << minodo->llave[i][j] << endl;
 			}
-			cout << " ";
 		}
 		desplegar(minodo->link[minodo->count]);
 	}
 	else {
-		cout << "vacio" << endl;
+	}
+}
+
+void resumenTiemposBTREE() {
+	cout << "----------------------------Resumen de tiempos--------------------------------" << endl;
+	cout << "Carga de padron: " << tiemposBTREE[0] << " segundos." << endl;
+	cout << "Listado de votantes: " << tiemposBTREE[1] << " segundos." << endl;
+	cout << "Ulitma busqueda de votante: " << tiemposBTREE[2] << " segundos." << endl;
+	cout << "Liberacion de padron: " << tiemposBTREE[3] << " segundos." << endl;
+	cout << "----------------------------Fin de resumen--------------------------------\n\n" << endl;
+	system("pause");
+	system("CLS");
+}
+
+void destruirBTREE(NodoBtree* nodo) {
+	if (nodo) {
+		for (int i = 0; i <= nodo->count; ++i) {
+			destruirBTREE(nodo->link[i]);
+		}
+		delete nodo;
 	}
 }
