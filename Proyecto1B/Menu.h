@@ -236,6 +236,89 @@ void arbolAVL(NodoAVL* arbol) {
 		}
 	} while (opcion != 5);
 }
+//-----------------------------------Arbol BTREE-----------------------------------//
+void arbolBTREE(NodoBtree* arbol) {
+	int opcion, opt;
+	char cedula[10];
+	do {
+		cout << "Arbol BTREE" << endl;
+		cout << "1. Listar" << endl;
+		cout << "2. Buscar" << endl;
+		cout << "3. Destruir" << endl;
+		cout << "4. Resumen de tiempos" << endl;
+		cout << "5. Salir" << endl;
+		cout << "Ingrese una opcion: ";
+		cin >> opcion;
+
+		switch (opcion) {
+		case 1:
+			time_t inicio1, fin1;
+			inicio1 = time(NULL);
+
+			desplegar(arbol);
+
+			fin1 = time(NULL);
+			tiemposBTREE[1] = difftime(fin1, inicio1);
+			printf("\nEl listado del padron ha tardado : %f segundos.\n", difftime(fin1, inicio1));
+			cout << "----------------------------Padron listado--------------------------------\n\n" << endl;
+			system("pause");
+			system("CLS");
+
+			break;
+
+		case 2:
+			cout << "Ingrese la cedula del votante a buscar: ";
+			cin >> cedula;
+
+			cout << "-----------------------------Buscando votante-------------------------------" << endl;
+
+			time_t inicio2, fin2;
+			inicio2 = time(NULL);
+
+			buscarBtree(cedula, &opt, arbol);
+
+			fin2 = time(NULL);
+			tiemposBTREE[2] = difftime(fin2, inicio2);
+
+			printf("\nLa busqueda del votante ha tardado : %f segundos.\n", difftime(fin2, inicio2));
+
+			system("pause");
+			system("CLS");
+
+			break;
+
+		case 3:
+			time_t inicio3, fin3;
+			inicio3 = time(NULL);
+
+			cout << "\n\n----------------------------Liberando padron--------------------------------" << endl;
+
+			destruirBTREE(arbol);
+			arbol = NULL;
+
+			fin3 = time(NULL);
+			tiemposBTREE[3] = difftime(fin3, inicio3);
+			printf("\nLa liberacion del padron ha tardado : %f segundos.\n", difftime(fin3, inicio3));
+			cout << "----------------------------Padron libreado--------------------------------\n\n" << endl;
+			system("pause");
+			system("CLS");
+			break;
+
+		case 4:
+			resumenTiemposBTREE();
+			break;
+
+		case 5:
+			opcion = 5;
+			system("CLS");
+			break;
+
+		default:
+			cout << "Opcion no valida" << endl;
+			break;
+		}
+	} while (opcion != 5);
+}
 //-----------------------------------Menu-----------------------------------//
 void menu() {
 	int opcion;
@@ -264,18 +347,15 @@ void menu() {
 				cargarABB(VotantesABB);
 				arbolBB(VotantesABB);
 				break;
-			case 3:
-				cargarAVL(VotantesAVL);
-				arbolAVL(VotantesAVL);
-				break;
-			case 4:
-				cargarBTREE(VotantesBtree);
-				desplegar(VotantesBtree);
-				break;
 
 			case 3:
 				cargarAVL(VotantesAVL);
 				arbolAVL(VotantesAVL);
+				break;
+
+			case 4:
+				cargarBTREE(VotantesBtree);
+				arbolBTREE(VotantesBtree);
 				break;
 
 			case 5:
