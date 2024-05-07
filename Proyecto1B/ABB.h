@@ -96,7 +96,4 @@ void listarABB(NodoBB* Raiz) {
         printf("%s\n", Raiz->llave);
         listarABB(Raiz->HijoIzquierdo);
     }
-    else {
-        cout << "No hay votantes en el padron\n\n" << endl;
-    }
 }
