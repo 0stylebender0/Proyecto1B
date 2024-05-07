@@ -239,6 +239,7 @@ void arbolAVL(NodoAVL* arbol) {
 //-----------------------------------Arbol BTREE-----------------------------------//
 void arbolBTREE(NodoBtree* arbol) {
 	int opcion, opt;
+	opt = 3;
 	char cedula[10];
 	do {
 		cout << "Arbol BTREE" << endl;
@@ -293,7 +294,7 @@ void arbolBTREE(NodoBtree* arbol) {
 
 			cout << "\n\n----------------------------Liberando padron--------------------------------" << endl;
 
-			destruirBTREE(arbol);
+			//destruirBTREE(arbol);
 			arbol = NULL;
 
 			fin3 = time(NULL);

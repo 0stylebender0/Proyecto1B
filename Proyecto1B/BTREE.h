@@ -329,6 +329,7 @@ void buscarBtree(const char* val, int* pos, NodoBtree* minodo) {
 	if (strcmp(val, minodo->llave[1]) < 0) {
 		*pos = 0;
 	}
+
 	else {
 		for (*pos = minodo->count;
 			(strcmp(val, minodo->llave[*pos]) < 0 && *pos > 1); (*pos)--);
@@ -338,6 +339,7 @@ void buscarBtree(const char* val, int* pos, NodoBtree* minodo) {
 			return;
 		}
 	}
+
 	buscarBtree(val, pos, minodo->link[*pos]);
 	cout << "----------------------------Votante no encontrado----------------------------" << endl;
 	return;
@@ -345,19 +347,18 @@ void buscarBtree(const char* val, int* pos, NodoBtree* minodo) {
 
 // B-Tree desplegar
 void desplegar(NodoBtree* minodo) {
-	int i;
 	if (minodo) {
-		for (i = 0; i < minodo->count; i++) {
+		for (int i = 0; i < minodo->count; i++) {
 			desplegar(minodo->link[i]);
-			for (int j = 0; j < strlen(minodo->llave[i]); j++) {
-				cout << minodo->llave[i][j] << endl;
+			for (int j = 0; j < 119; j++) {
+				cout << minodo->llave[i][j];
 			}
+			cout << "" << endl;
 		}
 		desplegar(minodo->link[minodo->count]);
 	}
-	else {
-	}
 }
+
 
 void resumenTiemposBTREE() {
 	cout << "----------------------------Resumen de tiempos--------------------------------" << endl;
