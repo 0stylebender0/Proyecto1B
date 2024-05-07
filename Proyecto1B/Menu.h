@@ -276,7 +276,7 @@ void arbolBTREE(NodoBtree* arbol) {
 			time_t inicio2, fin2;
 			inicio2 = time(NULL);
 
-			buscarBtree(cedula, &opt, arbol);
+			buscarBtree(cedula, arbol);
 
 			fin2 = time(NULL);
 			tiemposBTREE[2] = difftime(fin2, inicio2);
