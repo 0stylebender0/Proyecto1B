@@ -7,7 +7,7 @@ double tiemposBTREE[4];
 #define MIN 2
 
 struct NodoBtree {
-	char llave[MAX + 1][120]; // Ajustado el tamaño de la llave
+	char llave[MAX + 1][120];
 	int count;
 	NodoBtree* link[MAX + 1];
 };
@@ -16,7 +16,7 @@ NodoBtree* root = nullptr;
 
 NodoBtree* crearnodo(const char llave[120], NodoBtree* hijo) {
 	NodoBtree* NuevoNodo = new NodoBtree;
-	strncpy_s(NuevoNodo->llave[0], sizeof(NuevoNodo->llave[0]), llave, _TRUNCATE); // Utilizado _TRUNCATE para truncar la cadena si es demasiado larga
+	strncpy_s(NuevoNodo->llave[0], sizeof(NuevoNodo->llave[0]), llave, _TRUNCATE); 
 	NuevoNodo->count = 1;
 	NuevoNodo->link[0] = nullptr;
 	NuevoNodo->link[1] = hijo;
@@ -26,11 +26,11 @@ NodoBtree* crearnodo(const char llave[120], NodoBtree* hijo) {
 void Colocarnodo(const char* val, int pos, NodoBtree* node, NodoBtree* hijo) {
 	int j = node->count;
 	while (j > pos) {
-		strncpy_s(node->llave[j], sizeof(node->llave[j]), node->llave[j - 1], _TRUNCATE); // Movido de j+1 a j
+		strncpy_s(node->llave[j], sizeof(node->llave[j]), node->llave[j - 1], _TRUNCATE);
 		node->link[j + 1] = node->link[j];
 		j--;
 	}
-	strncpy_s(node->llave[j], sizeof(node->llave[j]), val, _TRUNCATE); // Actualizado a j en lugar de j+1
+	strncpy_s(node->llave[j], sizeof(node->llave[j]), val, _TRUNCATE); 
 	node->link[j + 1] = hijo;
 	node->count++;
 }
@@ -46,7 +46,7 @@ void PartirNodo(const char* val, char* pval, int pos, NodoBtree* node, NodoBtree
 	*NuevoNodo = new NodoBtree;
 	j = median + 1;
 	while (j <= MAX) {
-		strncpy_s((*NuevoNodo)->llave[j - median - 1], sizeof((*NuevoNodo)->llave[j]), node->llave[j - 1], _TRUNCATE); // Actualizado el índice de llave
+		strncpy_s((*NuevoNodo)->llave[j - median - 1], sizeof((*NuevoNodo)->llave[j]), node->llave[j - 1], _TRUNCATE);
 		(*NuevoNodo)->link[j - median] = node->link[j];
 		j++;
 	}
@@ -59,7 +59,7 @@ void PartirNodo(const char* val, char* pval, int pos, NodoBtree* node, NodoBtree
 	else {
 		Colocarnodo(val, pos - median, *NuevoNodo, hijo);
 	}
-	strncpy_s(pval, sizeof(node->llave[node->count - 1]), node->llave[node->count - 1], _TRUNCATE); // Actualizado a node->count-1
+	strncpy_s(pval, sizeof(node->llave[node->count - 1]), node->llave[node->count - 1], _TRUNCATE);
 	(*NuevoNodo)->link[0] = node->link[node->count];
 	node->count--;
 }
@@ -67,18 +67,18 @@ void PartirNodo(const char* val, char* pval, int pos, NodoBtree* node, NodoBtree
 int SetValorNodo(const char* val, char* pval, NodoBtree* node, NodoBtree** hijo) {
 	int pos;
 	if (!node) {
-		strcpy_s(pval, 120, val); // Actualizado el tamaño de la cadena a 120
+		strcpy_s(pval, 120, val);
 		*hijo = nullptr;
 		return 1;
 	}
 
-	if (strncmp(val, node->llave[0], 9) < 0) { // Cambiado a node->llave[0]
+	if (strncmp(val, node->llave[0], 9) < 0) {
 		pos = 0;
 	}
 	else {
 		for (pos = node->count;
-			(strncmp(val, node->llave[pos - 1], 9) < 0 && pos > 1); pos--); // Cambiado a node->llave[pos-1]
-		if (strncmp(val, node->llave[pos - 1], 9) == 0) { // Cambiado a node->llave[pos-1]
+			(strncmp(val, node->llave[pos - 1], 9) < 0 && pos > 1); pos--);
+		if (strncmp(val, node->llave[pos - 1], 9) == 0) { 
 			return 0;
 		}
 	}
@@ -95,7 +95,7 @@ int SetValorNodo(const char* val, char* pval, NodoBtree* node, NodoBtree** hijo)
 }
 
 void insertar(const char* val, NodoBtree*& PadronBtree) {
-	char i[120]; // Ajustado el tamaño de la cadena a 120
+	char i[120];
 	NodoBtree* hijo;
 	char flag = SetValorNodo(val, i, PadronBtree, &hijo);
 
@@ -323,12 +323,12 @@ void buscarBtree(const char* val, NodoBtree* minodo, int nivel = 0) {
 	}
 
 	int pos;
-	if (strncmp(val, minodo->llave[0], 9) < 0) { // Comparar solo los primeros 9 caracteres
+	if (strncmp(val, minodo->llave[0], 9) < 0) { 
 		pos = 0;
 	}
 	else {
-		for (pos = minodo->count; (strncmp(val, minodo->llave[pos - 1], 9) < 0 && pos > 1); pos--); // Cambiado a minodo->llave[pos-1]
-		if (strncmp(val, minodo->llave[pos - 1], 9) == 0) { // Cambiado a minodo->llave[pos-1]
+		for (pos = minodo->count; (strncmp(val, minodo->llave[pos - 1], 9) < 0 && pos > 1); pos--);
+		if (strncmp(val, minodo->llave[pos - 1], 9) == 0) {
 			cout << "----------------------------Votante encontrado-------------------------------" << endl;
 			cout << "Votante: " << minodo->llave[pos - 1] << endl; // Imprimir la cadena completa
 			return;
@@ -345,7 +345,7 @@ void desplegar(NodoBtree* minodo, int nivel = 0) {
 			desplegar(minodo->link[i + 1], nivel + 1); // Cambiado i a i+1
 			cout << minodo->llave[i] << endl;
 		}
-		desplegar(minodo->link[0], nivel + 1); // Cambiado minodo->link[minodo->count] a minodo->link[0]
+		desplegar(minodo->link[0], nivel + 1);
 	}
 }
 
