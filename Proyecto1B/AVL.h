@@ -129,7 +129,6 @@ NodoAVL* insertarAVL(NodoAVL*& Nodo, NodoAVL* padre, char agregar[120]) {
 
 NodoAVL* buscarAVL(NodoAVL* Raiz, const char* cualllave) {
     if (Raiz == NULL) {
-        cout << "No hay votantes en el padron\n\n" << endl;
         return NULL;                            //Si el Arbol esta vacio, retorna NULL
     }
     else {

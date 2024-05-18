@@ -28,7 +28,6 @@ bool insertarABB(NodoBB*& Raiz, const char* cualllave) {
 
 NodoBB* buscarABB(NodoBB* Raiz, const char* cualllave) {
     if (Raiz == NULL) {
-        cout << "No hay votantes en el padron\n\n" << endl;
         return NULL;                            //Si el Arbol esta vacio, retorna NULL
     }
     else {

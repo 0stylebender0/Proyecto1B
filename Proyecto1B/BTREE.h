@@ -326,11 +326,12 @@ void buscarBtree(const char* val, NodoBtree* minodo, int nivel = 0) {
 	if (strncmp(val, minodo->llave[0], 9) < 0) { 
 		pos = 0;
 	}
+
 	else {
 		for (pos = minodo->count; (strncmp(val, minodo->llave[pos - 1], 9) < 0 && pos > 1); pos--);
 		if (strncmp(val, minodo->llave[pos - 1], 9) == 0) {
+			cout << "Votante: " << minodo->llave[pos - 1] << endl; 
 			cout << "----------------------------Votante encontrado-------------------------------" << endl;
-			cout << "Votante: " << minodo->llave[pos - 1] << endl; // Imprimir la cadena completa
 			return;
 		}
 	}
@@ -342,7 +343,7 @@ void buscarBtree(const char* val, NodoBtree* minodo, int nivel = 0) {
 void desplegar(NodoBtree* minodo, int nivel = 0) {
 	if (minodo) {
 		for (int i = minodo->count - 1; i >= 0; --i) {
-			desplegar(minodo->link[i + 1], nivel + 1); // Cambiado i a i+1
+			desplegar(minodo->link[i + 1], nivel + 1); 
 			cout << minodo->llave[i] << endl;
 		}
 		desplegar(minodo->link[0], nivel + 1);

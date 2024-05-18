@@ -160,14 +160,14 @@ void buscarLista(PtrT_Votante& Lista, char cual[9]) {
 	tiemposLista[2] = difftime(fin, inicio);
 
 	if (encontro == false) {
-		printf("\nLa busqueda del votante ha tardado : %f segundos.\n", difftime(fin, inicio));
 		cout << "----------------------------Votante no encontrado--------------------------------\n\n" << endl;
+		printf("\nLa busqueda del votante ha tardado : %f segundos.\n", difftime(fin, inicio));
 		system("pause");
 		system("CLS");
 	}
 	else {
-		printf("\nLa busqueda del votante ha tardado : %f segundos.\n", difftime(fin, inicio));
 		cout << "----------------------------Votante encontrado--------------------------------\n\n" << endl;
+		printf("\nLa busqueda del votante ha tardado : %f segundos.\n", difftime(fin, inicio));
 		system("pause");
 		system("CLS");
 	}
