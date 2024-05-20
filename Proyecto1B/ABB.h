@@ -38,6 +38,7 @@ NodoBB* buscarABB(NodoBB* Raiz, const char* cualllave) {
     }
 }
 
+//Recorrido PosOrden
 void destruirABB(NodoBB*& Raiz) {
     if (Raiz != NULL) {                         // Si el Arbol no esta vacio
         destruirABB(Raiz->HijoIzquierdo);       // Podar el Hijo Izquierdo
@@ -89,6 +90,7 @@ void resumenTiemposABB() {
     system("CLS");
 }
 
+//Recorrido EnOrden
 void listarABB(NodoBB* Raiz) {
     if (Raiz != NULL) {
         listarABB(Raiz->HijoDerecho);

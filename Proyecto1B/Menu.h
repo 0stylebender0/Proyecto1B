@@ -104,6 +104,7 @@ void arbolBB(NodoBB* arbol){
 			printf("\nLa busqueda del votante ha tardado : %f segundos.\n", difftime(fin2, inicio2));
 
 			delete(buscado);
+			buscado = NULL;
 
 			system("pause");
 			system("CLS");
