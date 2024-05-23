@@ -122,18 +122,13 @@ void listar(PtrT_Votante& ListaMaestra) {
 			cout << Aux->cedula << " " << Aux->codelec << " " << Aux->sexo << " " << Aux->fecha << " " << Aux->numjun << " " << Aux->nombre << " " << Aux->papellido << " " << Aux->sapellido << endl;
 			Aux = Aux->PtrSiguiente;
 		}
-		fin = time(NULL);
-		tiemposLista[1] = difftime(fin, inicio);
-		printf("\nLa lista de votantes ha tardado : %f segundos.\n", difftime(fin, inicio));
-		cout << "----------------------------Votantes listados--------------------------------\n\n" << endl;
-		system("pause");
-		system("CLS");
 	}
-	else {
-		cout << "No hay votantes en la lista\n\n" << endl;
-		system("pause");
-		system("CLS");
-	}
+	fin = time(NULL);
+	tiemposLista[1] = difftime(fin, inicio);
+	printf("\nLa lista de votantes ha tardado : %f segundos.\n", difftime(fin, inicio));
+	cout << "----------------------------Votantes listados--------------------------------\n\n" << endl;
+	system("pause");
+	system("CLS");
 }
 
 void buscarLista(PtrT_Votante& Lista, char cual[9]) {

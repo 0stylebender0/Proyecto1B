@@ -43,6 +43,8 @@ void listaDinamica(PtrT_Votante &ListaMaestra) {
 
 			default:
 				cout << "Opcion no valida" << endl;
+				system("pause");
+				system("CLS");
 				break;
 		}
 	} while (opcion != 5);
@@ -68,10 +70,13 @@ void arbolBB(NodoBB* arbol){
 			time_t inicio1, fin1;
 			inicio1 = time(NULL);
 
+			cout << "----------------------------Listando padron--------------------------------" << endl;
+
 			listarABB(arbol);
 
 			fin1 = time(NULL);
 			tiemposABB[1] = difftime(fin1, inicio1);
+
 			printf("\nEl listado del padron ha tardado : %f segundos.\n", difftime(fin1, inicio1));
 			cout << "----------------------------Padron listado--------------------------------\n\n" << endl;
 			system("pause");
@@ -139,6 +144,8 @@ void arbolBB(NodoBB* arbol){
 
 		default:
 			cout << "Opcion no valida" << endl;
+			system("pause");
+			system("CLS");
 			break;
 		}
 	} while (opcion != 5);
@@ -163,6 +170,8 @@ void arbolAVL(NodoAVL* arbol) {
 		case 1:
 			time_t inicio1, fin1;
 			inicio1 = time(NULL);
+
+			cout << "----------------------------Listando padron--------------------------------" << endl;
 
 			listarAVL(arbol);
 
@@ -200,6 +209,7 @@ void arbolAVL(NodoAVL* arbol) {
 			printf("\nLa busqueda del votante ha tardado : %f segundos.\n", difftime(fin2, inicio2));
 
 			delete(buscado);
+			buscado = NULL;
 
 			system("pause");
 			system("CLS");
@@ -233,6 +243,8 @@ void arbolAVL(NodoAVL* arbol) {
 
 		default:
 			cout << "Opcion no valida" << endl;
+			system("pause");
+			system("CLS");
 			break;
 		}
 	} while (opcion != 5);
@@ -256,6 +268,8 @@ void arbolBTREE(NodoBtree* arbol) {
 		case 1:
 			time_t inicio1, fin1;
 			inicio1 = time(NULL);
+
+			cout << "----------------------------Listando padron--------------------------------" << endl;
 
 			desplegar(arbol);
 
@@ -302,10 +316,10 @@ void arbolBTREE(NodoBtree* arbol) {
 			tiemposBTREE[3] = difftime(fin3, inicio3);
 			printf("\nLa liberacion del padron ha tardado : %f segundos.\n", difftime(fin3, inicio3));
 			cout << "----------------------------Padron libreado--------------------------------\n\n" << endl;
+
 			system("pause");
 			system("CLS");
 			break;
-
 		case 4:
 			resumenTiemposBTREE();
 			break;
@@ -317,6 +331,8 @@ void arbolBTREE(NodoBtree* arbol) {
 
 		default:
 			cout << "Opcion no valida" << endl;
+			system("pause");
+			system("CLS");
 			break;
 		}
 	} while (opcion != 5);
@@ -335,9 +351,9 @@ void menu() {
 		cin >> opcion;
 
 		PtrT_Votante ListaMaestra = NULL;
-		NodoBB *VotantesABB = NULL;
-		NodoAVL* VotantesAVL = NULL;
-		NodoBtree* VotantesBtree = NULL;
+		NodoBB		*VotantesABB = NULL;
+		NodoAVL		*VotantesAVL = NULL;
+		NodoBtree	*VotantesBtree = NULL;
 
 		switch (opcion) {
 			case 1:
@@ -367,6 +383,8 @@ void menu() {
 
 			default:
 				cout << "Opcion no valida" << endl;
+				system("pause");
+				system("CLS");
 				break;
 		}
 	} while (opcion != 5);
