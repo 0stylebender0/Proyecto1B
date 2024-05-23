@@ -106,7 +106,7 @@ void cargarLista(PtrT_Votante& ListaMaestra) {
 	fin = time(NULL);
 	tiemposLista[0] = difftime(fin, inicio);
 	printf("\nEl cargado del padron ha tardado : %f segundos.\n", difftime(fin, inicio));
-	cout << "----------------------------Lista cargada--------------------------------\n\n" << endl;
+	cout << "----------------------------Lista cargada----------------------------------------\n\n" << endl;
 	system("pause");
 	system("CLS");
 }
@@ -126,7 +126,7 @@ void listar(PtrT_Votante& ListaMaestra) {
 	fin = time(NULL);
 	tiemposLista[1] = difftime(fin, inicio);
 	printf("\nLa lista de votantes ha tardado : %f segundos.\n", difftime(fin, inicio));
-	cout << "----------------------------Votantes listados--------------------------------\n\n" << endl;
+	cout << "----------------------------Votantes listados-----------------------------------\n\n" << endl;
 	system("pause");
 	system("CLS");
 }
@@ -161,7 +161,7 @@ void buscarLista(PtrT_Votante& Lista, char cual[9]) {
 		system("CLS");
 	}
 	else {
-		cout << "----------------------------Votante encontrado--------------------------------\n\n" << endl;
+		cout << "----------------------------Votante encontrado-----------------------------------\n\n" << endl;
 		printf("\nLa busqueda del votante ha tardado : %f segundos.\n", difftime(fin, inicio));
 		system("pause");
 		system("CLS");
@@ -190,12 +190,10 @@ void destuirLista(PtrT_Votante& ListaV) {
 }
 
 void resumenTiemposLista() {
-	cout << "----------------------------Resumen de tiempos--------------------------------" << endl;
-	cout << "Carga de padron: " << tiemposLista[0] << " segundos." << endl;
-	cout << "Listado de votantes: " << tiemposLista[1] << " segundos." << endl;
-	cout << "Ulitma busqueda de votante: " << tiemposLista[2] << " segundos." << endl;
-	cout << "Liberacion de padron: " << tiemposLista[3] << " segundos." << endl;
+	cout << "----------------------------Resumen de tiempos----------------------------" << endl;
+	cout << "Carga de padron: " << tiemposLista[0] << " segundos." << endl;            
+	cout << "Listado de votantes: " << tiemposLista[1] << " segundos." << endl;        
+	cout << "Ulitma busqueda de votante: " << tiemposLista[2] << " segundos." << endl; 
+	cout << "Liberacion de padron: " << tiemposLista[3] << " segundos." << endl;	   
 	cout << "----------------------------Fin de resumen--------------------------------\n\n" << endl;
-	system("pause");
-	system("CLS");
 }

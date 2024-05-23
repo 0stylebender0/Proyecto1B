@@ -351,14 +351,12 @@ void desplegar(NodoBtree* minodo, int nivel = 0) {
 }
 
 void resumenTiemposBTREE() {
-	cout << "----------------------------Resumen de tiempos--------------------------------" << endl;
+	cout << "----------------------------Resumen de tiempos----------------------------" << endl;
 	cout << "Carga de padron: " << tiemposBTREE[0] << " segundos." << endl;
 	cout << "Listado de votantes: " << tiemposBTREE[1] << " segundos." << endl;
 	cout << "Ulitma busqueda de votante: " << tiemposBTREE[2] << " segundos." << endl;
 	cout << "Liberacion de padron: " << tiemposBTREE[3] << " segundos." << endl;
 	cout << "----------------------------Fin de resumen--------------------------------\n\n" << endl;
-	system("pause");
-	system("CLS");
 }
 
 void destruirBTREE(NodoBtree* nodo) {

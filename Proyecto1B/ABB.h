@@ -80,14 +80,12 @@ void cargarABB(NodoBB*& PadronABB) {
 }
 
 void resumenTiemposABB() {
-    cout << "----------------------------Resumen de tiempos--------------------------------" << endl;
+    cout << "----------------------------Resumen de tiempos----------------------------" << endl;
     cout << "Carga de padron: " << tiemposABB[0] << " segundos." << endl;
     cout << "Listado de votantes: " << tiemposABB[1] << " segundos." << endl;
     cout << "Ulitma busqueda de votante: " << tiemposABB[2] << " segundos." << endl;
     cout << "Liberacion de padron: " << tiemposABB[3] << " segundos." << endl;
     cout << "----------------------------Fin de resumen--------------------------------\n\n" << endl;
-    system("pause");
-    system("CLS");
 }
 
 //Recorrido EnOrden

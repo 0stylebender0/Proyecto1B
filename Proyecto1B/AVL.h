@@ -194,12 +194,10 @@ void destruirAVL(NodoAVL*& root)
 }
 
 void resumenTiemposAVL() {
-    cout << "----------------------------Resumen de tiempos--------------------------------" << endl;
+    cout << "----------------------------Resumen de tiempos----------------------------" << endl;
     cout << "Carga de padron: " << tiemposAVL[0] << " segundos." << endl;
     cout << "Listado de votantes: " << tiemposAVL[1] << " segundos." << endl;
     cout << "Ulitma busqueda de votante: " << tiemposAVL[2] << " segundos." << endl;
     cout << "Liberacion de padron: " << tiemposAVL[3] << " segundos." << endl;
     cout << "----------------------------Fin de resumen--------------------------------\n\n" << endl;
-    system("pause");
-    system("CLS");
 }

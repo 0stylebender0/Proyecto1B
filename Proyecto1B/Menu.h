@@ -34,6 +34,8 @@ void listaDinamica(PtrT_Votante &ListaMaestra) {
 
 			case 4:
 				resumenTiemposLista();
+				system("pause");
+				system("CLS");
 				break;
 
 			case 5:
@@ -78,7 +80,7 @@ void arbolBB(NodoBB* arbol){
 			tiemposABB[1] = difftime(fin1, inicio1);
 
 			printf("\nEl listado del padron ha tardado : %f segundos.\n", difftime(fin1, inicio1));
-			cout << "----------------------------Padron listado--------------------------------\n\n" << endl;
+			cout << "----------------------------Padron listado---------------------------------\n\n" << endl;
 			system("pause");
 			system("CLS");
 
@@ -88,7 +90,7 @@ void arbolBB(NodoBB* arbol){
 			cout << "Ingrese la cedula del votante a buscar: ";
 			cin >> cedula;
 
-			cout << "-----------------------------Buscando votante-------------------------------" << endl;
+			cout << "-----------------------------Buscando votante------------------------------------" << endl;
 
 			time_t inicio2, fin2;
 			inicio2 = time(NULL);
@@ -127,7 +129,7 @@ void arbolBB(NodoBB* arbol){
 			fin3 = time(NULL);
 			tiemposABB[3] = difftime(fin3, inicio3);
 			printf("\nLa liberacion del padron ha tardado : %f segundos.\n", difftime(fin3, inicio3));
-			cout << "----------------------------Padron libreado--------------------------------\n\n" << endl;
+			cout << "----------------------------Padron libreado-------------------------------------\n\n" << endl;
 			system("pause");
 			system("CLS");
 
@@ -135,6 +137,8 @@ void arbolBB(NodoBB* arbol){
 
 		case 4:
 			resumenTiemposABB();
+			system("pause");
+			system("CLS");
 			break;
 
 		case 5:
@@ -178,7 +182,7 @@ void arbolAVL(NodoAVL* arbol) {
 			fin1 = time(NULL);
 			tiemposAVL[1] = difftime(fin1, inicio1);
 			printf("\nEl listado del padron ha tardado : %f segundos.\n", difftime(fin1, inicio1));
-			cout << "----------------------------Padron listado--------------------------------\n\n" << endl;
+			cout << "----------------------------Padron listado---------------------------------\n\n" << endl;
 			system("pause");
 			system("CLS");
 
@@ -188,7 +192,7 @@ void arbolAVL(NodoAVL* arbol) {
 			cout << "Ingrese la cedula del votante a buscar: ";
 			cin >> cedula;
 
-			cout << "-----------------------------Buscando votante-------------------------------" << endl;
+			cout << "-----------------------------Buscando votante------------------------------------" << endl;
 
 			time_t inicio2, fin2;
 			inicio2 = time(NULL);
@@ -227,13 +231,15 @@ void arbolAVL(NodoAVL* arbol) {
 			fin3 = time(NULL);
 			tiemposAVL[3] = difftime(fin3, inicio3);
 			printf("\nLa liberacion del padron ha tardado : %f segundos.\n", difftime(fin3, inicio3));
-			cout << "----------------------------Padron libreado--------------------------------\n\n" << endl;
+			cout << "----------------------------Padron libreado-------------------------------------\n\n" << endl;
 			system("pause");
 			system("CLS");
 			break;
 
 		case 4:
 			resumenTiemposAVL();
+			system("pause");
+			system("CLS");
 			break;
 
 		case 5:
@@ -269,14 +275,14 @@ void arbolBTREE(NodoBtree* arbol) {
 			time_t inicio1, fin1;
 			inicio1 = time(NULL);
 
-			cout << "----------------------------Listando padron--------------------------------" << endl;
+			cout << "----------------------------Listando padron---------------------------------" << endl;
 
 			desplegar(arbol);
 
 			fin1 = time(NULL);
 			tiemposBTREE[1] = difftime(fin1, inicio1);
 			printf("\nEl listado del padron ha tardado : %f segundos.\n", difftime(fin1, inicio1));
-			cout << "----------------------------Padron listado--------------------------------\n\n" << endl;
+			cout << "----------------------------Padron listado----------------------------------\n\n" << endl;
 			system("pause");
 			system("CLS");
 
@@ -315,13 +321,15 @@ void arbolBTREE(NodoBtree* arbol) {
 			fin3 = time(NULL);
 			tiemposBTREE[3] = difftime(fin3, inicio3);
 			printf("\nLa liberacion del padron ha tardado : %f segundos.\n", difftime(fin3, inicio3));
-			cout << "----------------------------Padron libreado--------------------------------\n\n" << endl;
+			cout << "----------------------------Padron libreado-------------------------------------\n\n" << endl;
 
 			system("pause");
 			system("CLS");
 			break;
 		case 4:
 			resumenTiemposBTREE();
+			system("pause");
+			system("CLS");
 			break;
 
 		case 5:
@@ -337,16 +345,34 @@ void arbolBTREE(NodoBtree* arbol) {
 		}
 	} while (opcion != 5);
 }
+//-----------------------------------Resumen de tiempos-----------------------------------//
+void resumenTiempos() {
+	cout << "\nLista Dinamica" << endl;
+	resumenTiemposLista();
+
+	cout << "Arbol Binario de Busqueda" << endl;
+	resumenTiemposABB();
+
+	cout << "Arbol AVL" << endl;
+	resumenTiemposAVL();
+
+	cout << "Arbol BTREE" << endl;
+	resumenTiemposBTREE();
+
+	system("pause");
+	system("CLS");
+}
 //-----------------------------------Menu-----------------------------------//
 void menu() {
 	int opcion;
 	do{
-		cout << "Menu" << endl;
+		cout << "Comparador-Eficiencia Algoritmos en Estructuras de Datos" << endl;
 		cout << "1. Lista Dinamica" << endl;
 		cout << "2. Arbol Binario de Busqueda" << endl;
 		cout << "3. Arbol AVL" << endl;
 		cout << "4. Arbol BTREE" << endl;
-		cout << "5. Salir" << endl;
+		cout << "5. Resumen de tiempos" << endl;
+		cout << "6. Salir" << endl;
 		cout << "Ingrese una opcion: ";
 		cin >> opcion;
 
@@ -377,7 +403,11 @@ void menu() {
 				break;
 
 			case 5:
-				opcion = 5;
+				resumenTiempos();
+				break;
+
+			case 6:
+				opcion = 6;
 				system("CLS");
 				break;
 
@@ -387,5 +417,5 @@ void menu() {
 				system("CLS");
 				break;
 		}
-	} while (opcion != 5);
+	} while (opcion != 6);
 }
